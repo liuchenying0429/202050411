@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <!-- 選單 -->
+    <ul class="menu">
+      <li>首頁</li>
+      <li>自我介紹</li>
+      <li>
+        作品集
+        <ul class="submenu">
+          <li onclick="loadIframe('https://hackmd.io/@ChengYing/S17iUUr9kg')">第一周</li>
+          <li onclick="loadIframe('https://hackmd.io/@ChengYing/SySu2yOsyg')">第二周</li>
+          <li onclick="loadIframe('https://liuchenying0429.github.io/20250328/')">第三周</li>
+        </ul>
+      </li>
+      <li>測驗卷</li>
+      <li>教學影片</li>
+    </ul>
+
+    <!-- iframe -->
+    <iframe id="contentFrame" style="display: none;"></iframe>
+
+    <!-- p5.js 程式碼 -->
+    <script src="sketch.js"></script>
+
+    <script>
+      // 用於加載 iframe 的內容
+      function loadIframe(url) {
+        const iframe = document.getElementById('contentFrame');
+        iframe.src = url;
+        iframe.style.display = 'block'; // 顯示 iframe
+      }
+
+      // 啟動 AudioContext
+      document.body.addEventListener('click', () => {
+        userStartAudio(); // 啟動 AudioContext
+      }, { once: true }); // 確保只執行一次
+    </script>
+  </body>
+</html>
